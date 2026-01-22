@@ -13,7 +13,30 @@ const keyboard = [
     ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER']
 ];
 
+// Password Protection
+const CORRECT_PASSWORD = 'zemme50'; // Change this to your desired password
+
+function checkPassword() {
+    const password = prompt('Enter password to access the game:');
+    
+    if (password === CORRECT_PASSWORD) {
+        return true;
+    } else if (password === null) {
+        // User clicked cancel
+        document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
+        return false;
+    } else {
+        alert('Incorrect password!');
+        return checkPassword(); // Ask again
+    }
+}
+
 async function init() {
+    // Check password first
+    if (!checkPassword()) {
+        return;
+    }
+
     const words = await loadWords();
     answers = words.answers.map(w => w.toUpperCase());
     allowed = words.allowed.map(w => w.toUpperCase());
@@ -187,13 +210,13 @@ function submitGuess() {
     
     if (currentGuess === targetWord) {
         setTimeout(() => {
-            showMessage('Congratulations! 🎉', 50000);
+            showMessage('Congratulations! 🎉', 5000);
             gameOver = true;
             document.getElementById('reset-btn').classList.remove('hidden');
         }, 500);
     } else if (currentRow === 5) {
         setTimeout(() => {
-            showMessage(`Game Over! The word was ${targetWord}`, 50000);
+            showMessage(`Game Over! The word was ${targetWord}`, 5000);
             gameOver = true;
             document.getElementById('reset-btn').classList.remove('hidden');
         }, 500);
