@@ -13,27 +13,24 @@ const keyboard = [
     ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER']
 ];
 
-// Password Protection
-const CORRECT_PASSWORD = 'zemme50'; // Change this to your desired password
+const rec = 'zemme50';
 
-function checkPassword() {
-    const password = prompt('Enter password to access the game:');
+function check() {
+    const pw = prompt('Enter:');
     
-    if (password === CORRECT_PASSWORD) {
+    if (pw === rec) {
         return true;
-    } else if (password === null) {
-        // User clicked cancel
+    } else if (pw === null) {
         document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
         return false;
     } else {
-        alert('Incorrect password!');
-        return checkPassword(); // Ask again
+        alert('Incorrect!');
+        return check();
     }
 }
 
 async function init() {
-    // Check password first
-    if (!checkPassword()) {
+    if (!check()) {
         return;
     }
 
@@ -42,7 +39,6 @@ async function init() {
     allowed = words.allowed.map(w => w.toUpperCase());
     
     targetWord = answers[Math.floor(Math.random() * answers.length)];
-    console.log('Target word:', targetWord); // For testing - remove in production
     
     createBoard();
     createKeyboard();
@@ -135,16 +131,14 @@ function evaluateGuess(guess) {
     const result = Array(5).fill('absent');
     const targetLetters = targetWord.split('');
     const guessLetters = guess.split('');
-    
-    // First pass: mark correct positions
+
     guessLetters.forEach((letter, i) => {
         if (letter === targetLetters[i]) {
             result[i] = 'correct';
             targetLetters[i] = null;
         }
     });
-    
-    // Second pass: mark present letters
+
     guessLetters.forEach((letter, i) => {
         if (result[i] === 'absent' && targetLetters.includes(letter)) {
             result[i] = 'present';
@@ -197,8 +191,7 @@ function submitGuess() {
     
     const evaluation = evaluateGuess(currentGuess);
     evaluations[currentRow] = evaluation;
-    
-    // Animate tiles
+ 
     for (let i = 0; i < 5; i++) {
         const tile = document.getElementById(`tile-${currentRow}-${i}`);
         setTimeout(() => {
@@ -233,7 +226,6 @@ function resetGame() {
     evaluations = [];
     keyboardColors = {};
     targetWord = answers[Math.floor(Math.random() * answers.length)];
-    console.log('New target word:', targetWord); // For testing
     
     createBoard();
     createKeyboard();
@@ -242,5 +234,4 @@ function resetGame() {
     document.getElementById('reset-btn').classList.add('hidden');
 }
 
-// Initialize game when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
