@@ -23,11 +23,39 @@ body {
     align-items: center;
 }
 
-h1 {
+/* h1 {
     text-align: center;
     font-size: clamp(2.5rem, 5vw, 2.5rem);
     margin-bottom: 10px;
     letter-spacing: 0.2rem;
+} */
+h1 {
+    text-align: center;
+    font-size: clamp(1rem, 6vw, 1.5rem);
+    margin-bottom: 1px;
+    letter-spacing: 0.15rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    text-transform: uppercase;
+    animation: gradientShift 3s ease infinite;
+    background-size: 200% 200%;
+    text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .message {
@@ -50,7 +78,7 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
     max-width: 500px;
     padding: 0 2px;
