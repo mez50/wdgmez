@@ -11,26 +11,40 @@
         <h1>SELECT LEVEL</h1>
         <div class="level-container">
             <button class="level-btn beginner" data-level="beginner">
-                <span class="level-title">BEGINNER</span>
-                <span class="level-desc">4 Letter Words</span>
+                <span class="level-title">4 Letter Words</span>
+                <!-- <span class="level-desc">4 Letter Words</span> -->
             </button>
             
             <button class="level-btn intermediate" data-level="intermediate">
-                <span class="level-title">INTERMEDIATE</span>
-                <span class="level-desc">5 Letter Words</span>
-            </button>
-            
-            <button class="level-btn advance" data-level="advance">
-                <span class="level-title">ADVANCE</span>
-                <span class="level-desc">6 Letter Words</span>
-            </button>
-            
-            <button class="level-btn pro" data-level="pro">
-                <span class="level-title">EXPERT</span>
-                <span class="level-desc">7 Letter Words</span>
+                <span class="level-title">5 Letter Words</span>
+                <!-- <span class="level-desc">5 Letter Words</span> -->
             </button>
         </div>
     </div>
     <script src="level-select.js"></script>
+    <script>
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
 </body>
 </html>

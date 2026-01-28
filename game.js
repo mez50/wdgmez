@@ -9,6 +9,7 @@ let keyboardColors = {};
 let currentLevel = 'intermediate';
 let wordLength = 5;
 let totalScore = 0;
+let roundsPlayed = 0;
 
 const keyboard = [
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -17,10 +18,8 @@ const keyboard = [
 ];
 
 const levelConfig = {
-    beginner: { length: 4, name: 'Beginner' },
-    intermediate: { length: 5, name: 'Intermediate' },
-    advance: { length: 6, name: 'Advance' },
-    pro: { length: 7, name: 'Pro' }
+    beginner: { length: 4, name: '4 WORDS' },
+    intermediate: { length: 5, name: '5 WORDS' }
 };
 
 const scorePoints = {
@@ -59,7 +58,7 @@ async function init() {
     
     createBoard();
     createKeyboard();
-    updateScoreDisplay();
+    updateStatsDisplay();
     
     document.addEventListener('keydown', handlePhysicalKeyboard);
     document.getElementById('reset-btn').addEventListener('click', resetGame);
@@ -186,18 +185,29 @@ function updateKeyboardColors(guess, evaluation) {
     });
 }
 
-function updateScoreDisplay() {
+function updateStatsDisplay() {
     const scoreEl = document.getElementById('score-display');
+    const roundsEl = document.getElementById('rounds-display');
+    
     if (scoreEl) {
         scoreEl.textContent = totalScore;
+    }
+    if (roundsEl) {
+        roundsEl.textContent = roundsPlayed;
     }
 }
 
 function addScore(rowNumber) {
     const points = scorePoints[rowNumber] || 0;
     totalScore += points;
-    updateScoreDisplay();
+    roundsPlayed++;
+    updateStatsDisplay();
     return points;
+}
+
+function incrementRounds() {
+    roundsPlayed++;
+    updateStatsDisplay();
 }
 
 function showMessage(text, duration = 2000) {
@@ -241,6 +251,7 @@ function submitGuess() {
             document.getElementById('reset-btn').classList.remove('hidden');
         }, 500);
     } else if (currentRow === 5) {
+        incrementRounds();
         setTimeout(() => {
             showMessage(`Game Over! The word was ${targetWord}`, 5000);
             gameOver = true;
