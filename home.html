@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Monkey's Butt - Fun Games for Kids</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="home-container">
+        <div class="logo-section">
+            <img src="Images/monkey.png" alt="Monkey" class="monkey-logo">
+            <h1 class="site-title">Monkey's Butt</h1>
+        </div>
+        
+        <div class="games-grid">
+            <div class="game-card word-game" onclick="location.href='level-select.html'">
+                <div class="game-icon">🔤</div>
+                <h2 class="game-title">Guess The Word</h2>
+                <p class="game-description">Can you guess the secret word? Challenge yourself with different levels!</p>
+                <button class="play-btn">Play Now!</button>
+            </div>
+            
+            <div class="game-card coming-soon">
+                <div class="game-icon">🎮</div>
+                <h2 class="game-title">More Games</h2>
+                <p class="game-description">Coming Soon!</p>
+                <button class="play-btn disabled" disabled>Coming Soon</button>
+            </div>
+        </div>
+        
+        <footer class="home-footer">
+            <p>© 2026 Monkey's Butt</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

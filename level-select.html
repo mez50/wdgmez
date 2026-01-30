@@ -8,21 +8,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>SELECT LEVEL</h1>
+        <div class="level-header">
+            <button id="home-btn" class="home-btn">← Home</button>
+            <h1>SELECT LEVEL</h1>
+            <div class="spacer"></div>
+        </div>
         <div class="level-container">
             <button class="level-btn beginner" data-level="beginner">
-                <span class="level-title">4 Letter Words</span>
-                <!-- <span class="level-desc">4 Letter Words</span> -->
+                <span class="level-title">BEGINNER</span>
+                <span class="level-desc">4 Letter Words</span>
             </button>
             
             <button class="level-btn intermediate" data-level="intermediate">
-                <span class="level-title">5 Letter Words</span>
-                <!-- <span class="level-desc">5 Letter Words</span> -->
+                <span class="level-title">INTERMEDIATE</span>
+                <span class="level-desc">5 Letter Words</span>
             </button>
         </div>
     </div>
     <script src="level-select.js"></script>
     <script>
+        // Home button
+        document.getElementById('home-btn').addEventListener('click', () => {
+            window.location.href = 'home.html';
+        });
+
         // Prevent pinch zoom on iOS
         document.addEventListener('gesturestart', function(e) {
             e.preventDefault();

@@ -18,8 +18,8 @@ const keyboard = [
 ];
 
 const levelConfig = {
-    beginner: { length: 4, name: '4 WORDS' },
-    intermediate: { length: 5, name: '5 WORDS' }
+    beginner: { length: 4, name: '4 LETTERS' },
+    intermediate: { length: 5, name: '5 LETTERS' }
 };
 
 const scorePoints = {

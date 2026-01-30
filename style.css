@@ -357,6 +357,59 @@ h1 {
 }
 
 /* Level Selection Styles */
+/* Level Select Header */
+.level-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.home-btn {
+    padding: 8px 15px;
+    background-color: #3a3a3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.home-btn:hover {
+    background-color: #565758;
+    transform: translateX(-3px);
+}
+
+.home-btn:active {
+    transform: scale(0.95);
+}
+
+.level-header h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.level-header .spacer {
+    width: 70px; /* Same width as home button to center the title */
+}
+
+@media (max-width: 380px) {
+    .home-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .level-header .spacer {
+        width: 60px;
+    }
+}
+
 .level-container {
     display: flex;
     flex-direction: column;
