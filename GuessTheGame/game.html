@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Guess The Word</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="back-btn" class="back-btn">Back</button>
+            <h1>GUESS THE WORD</h1>
+            <div class="level-badge" id="level-badge"></div>
+        </div>
+        <div id="message" class="message hidden"></div>
+        <div id="game-board"></div>
+        <div id="keyboard"></div>
+        <div class="score-stats">
+            <div class="stat-item">
+                <div class="stat-label">Rounds Played:</div>
+                <div class="stat-circle" id="rounds-display">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Your Score:</div>
+                <div class="stat-circle" id="score-display">0</div>
+            </div>
+        </div>
+        <button id="reset-btn" class="reset-btn hidden">Play Again</button>
+    </div>
+    <script src="words.js"></script>
+    <script src="game.js"></script>
+    <script>
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

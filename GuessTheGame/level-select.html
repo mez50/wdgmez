@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Select Level</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="level-header">
+            <button id="home-btn" class="home-btn">Home</button>
+            <h1>SELECT LEVEL</h1>
+            <div class="spacer"></div>
+        </div>
+        <div class="level-container">
+            <button class="level-btn beginner" data-level="beginner">
+                <span class="level-title">BEGINNER</span>
+                <span class="level-desc">4 Letter Words</span>
+            </button>
+            
+            <button class="level-btn intermediate" data-level="intermediate">
+                <span class="level-title">INTERMEDIATE</span>
+                <span class="level-desc">5 Letter Words</span>
+            </button>
+        </div>
+    </div>
+    <script src="level-select.js"></script>
+    <script>
+        // Home button
+        document.getElementById('home-btn').addEventListener('click', () => {
+            window.location.href = '../home.html';
+        });
+
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
