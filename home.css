@@ -320,3 +320,50 @@ html {
         margin-bottom: 20px;
     }
 }
+
+/* Logout Section */
+.logout-section {
+    text-align: center;
+    margin: 30px 0 20px 0;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #FF6347 0%, #FF4500 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 5px 15px rgba(255, 99, 71, 0.4),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+    font-family: 'Nunito', sans-serif;
+}
+
+.logout-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(255, 99, 71, 0.6),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 3px 10px rgba(255, 99, 71, 0.4),
+        inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .logout-section {
+        margin: 20px 0 15px 0;
+    }
+    
+    .logout-btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}

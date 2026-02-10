@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Login - Monkey's Butt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="Images/monkey.png" alt="Monkey" class="monkey-logo-small">
+            <h1 class="login-title">Monkey's Butt</h1>
+            <p class="login-subtitle">Banana time! Hop in to play!</p>
+        </div>
+        
+        <div class="login-box">
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Monkey Name</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your monkey name" 
+                        required 
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Banana Key</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your banana key" 
+                        required
+                    >
+                </div>
+                
+                <div id="error-message" class="error-message hidden"></div>
+                
+                <button type="submit" class="login-btn">
+                    <span>Let's Play!</span>
+                    <span class="btn-icon">🎮</span>
+                </button>
+            </form>
+            
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.html">Sign Up!</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="login.js"></script>
+    <script>
+        // Prevent pinch zoom
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+        
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

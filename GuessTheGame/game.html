@@ -31,6 +31,11 @@
     <script src="words.js"></script>
     <script src="game.js"></script>
     <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('loggedIn')) {
+            window.location.href = 'login.html';
+        }
+        
         // Prevent pinch zoom on iOS
         document.addEventListener('gesturestart', function(e) {
             e.preventDefault();
