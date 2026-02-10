@@ -679,6 +679,39 @@ form {
     }
 }
 
+@media (max-height: 400px) {
+    body {
+        align-items: flex-start;
+        padding-top: -10px;
+    }
+    
+    .login-container {
+        max-height: 98vh;
+        margin-top: 0;
+    }
+    
+    .subtitle-container {
+        margin-bottom: 8px;
+    }
+    
+    .input-wrapper {
+        margin-bottom: 10px;
+    }
+    
+    form {
+        padding: 15px;
+    }
+    
+    .box-header {
+        padding: 8px 15px;
+    }
+    
+    .status-bar {
+        margin-top: 8px;
+        padding: 6px 12px;
+    }
+}
+
 @media (max-height: 900px) {
     body {
         align-items: flex-start;
