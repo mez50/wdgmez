@@ -47,13 +47,13 @@
     <script>
         // Check if user is logged in
         if (!sessionStorage.getItem('loggedIn')) {
-            window.location.href = 'login2.html';
+            window.location.href = 'login.html';
         }
 
         // Logout function
         function logout() {
             sessionStorage.clear();
-            window.location.href = 'login2.html';
+            window.location.href = 'login.html';
         }
 
         // Prevent pinch zoom on iOS
