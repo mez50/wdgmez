@@ -1,7 +1,7 @@
 document.getElementById('login-form-cyber').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const username = document.getElementById('username-cyber').value.trim();
+    const username = document.getElementById('username-cyber').value.trim().toLowerCase(); // Convert to lowercase
     const password = document.getElementById('password-cyber').value;
     const errorMsg = document.getElementById('error-message-cyber');
     const errorText = errorMsg.querySelector('.error-text');
@@ -60,8 +60,15 @@ async function validateCredentials(username, password) {
         const lines = text.split('\n');
         
         for (let line of lines) {
-            const [storedUser, storedPass] = line.trim().split(':');
-            if (storedUser === username && storedPass === password) {
+            const trimmedLine = line.trim();
+            if (!trimmedLine) continue; // Skip empty lines
+            
+            const [storedUser, storedPass] = trimmedLine.split(':');
+            
+            // Compare case-insensitively for username
+            if (storedUser && storedPass && 
+                storedUser.toLowerCase() === username.toLowerCase() && 
+                storedPass === password) {
                 return true;
             }
         }

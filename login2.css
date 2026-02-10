@@ -356,12 +356,10 @@ form {
     color: var(--neon-green);
     outline: none;
     transition: all 0.3s ease;
-    text-transform: uppercase;
 }
 
 .input-container input::placeholder {
     color: rgba(0, 255, 255, 0.4);
-    text-transform: uppercase;
 }
 
 .input-container input:focus {
