@@ -8,26 +8,28 @@
 </head>
 <body>
     <script>
-        const rec = 'zemme50'; // Change this to your password
+        // const rec = 'zemme50'; // Change this to your password
         
-        function check() {
-            const pw = prompt('Enter:');
+        // function check() {
+        //     const pw = prompt('Enter:');
             
-            if (pw === rec) {
-                return true;
-            } else if (pw === null) {
-                document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
-                return false;
-            } else {
-                alert('Incorrect!');
-                return check();
-            }
-        }
+        //     if (pw === rec) {
+        //         return true;
+        //     } else if (pw === null) {
+        //         document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
+        //         return false;
+        //     } else {
+        //         alert('Incorrect!');
+        //         return check();
+        //     }
+        // }
         
-        // Check password on page load
-        if (check()) {
-            window.location.href = 'login.html';
-        }
+        // // Check password on page load
+        // if (check()) {
+        //     window.location.href = 'login2.html';
+        // }
+
+        window.location.href = 'login2.html';
     </script>
 </body>
 </html>

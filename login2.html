@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Monkey's Butt Production</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login2.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    
+    <div class="login-container">
+        <!-- Glitch Effect Logo -->
+        <div class="logo-container">
+            <img src="Images/cyber-monkey.png" alt="Cyber Monkey" class="cyber-logo" data-text="MONKEY">
+            <div class="glitch-overlay"></div>
+        </div>
+        
+        <!-- Title with Neon Effect -->
+        <h1 class="cyber-title" data-text="MONKEY'S BUTT">
+            <span class="neon-text">MONKEY'S BUTT <br> STUDIOS</span>
+            <span class="neon-text neon-flicker">MONKEY'S BUTT <br> STUDIOS</span>
+        </h1>
+        <br>
+        <br>
+        <br>
+        <div class="subtitle-container">
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                <span class="typing-text">NEURAL_LOGIN_INTERFACE_v2.0.26</span>
+                <span class="cursor">_</span>
+            </div>
+        </div>
+        
+        <!-- Login Box -->
+        <div class="cyber-box">
+            <div class="box-header">
+                <div class="header-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="header-text">ACCESS TERMINAL</div>
+            </div>
+            
+            <form id="login-form-cyber">
+                <div class="input-wrapper">
+                    <label for="username-cyber">
+                        <span class="label-icon">👤</span>
+                        <span class="label-text">USER_ID</span>
+                    </label>
+                    <div class="input-container">
+                        <span class="input-prefix">&gt;&gt;</span>
+                        <input 
+                            type="text" 
+                            id="username-cyber" 
+                            name="username" 
+                            placeholder="ENTER_USERNAME" 
+                            required 
+                            autocomplete="off"
+                        >
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+                
+                <div class="input-wrapper">
+                    <label for="password-cyber">
+                        <span class="label-icon">🔐</span>
+                        <span class="label-text">AUTH_KEY</span>
+                    </label>
+                    <div class="input-container">
+                        <span class="input-prefix">&gt;&gt;</span>
+                        <input 
+                            type="password" 
+                            id="password-cyber" 
+                            name="password" 
+                            placeholder="ENTER_PASSWORD" 
+                            required
+                        >
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+                
+                <div id="error-message-cyber" class="error-terminal hidden">
+                    <div class="error-header">⚠️ SYSTEM ERROR ⚠️</div>
+                    <div class="error-text"></div>
+                </div>
+                
+                <button type="submit" class="cyber-btn">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">
+                        <span class="btn-icon">⚡</span>
+                        GET IN
+                        <span class="btn-icon">⚡</span>
+                    </span>
+                    <div class="btn-particles"></div>
+                </button>
+                
+                <div class="loading-bar hidden" id="loading-bar">
+                    <div class="loading-progress"></div>
+                    <div class="loading-text">ACCESSING MAINFRAME...</div>
+                </div>
+            </form>
+            
+            <div class="register-terminal">
+                <div class="terminal-prompt">
+                    <span class="prompt-symbol">$</span>
+                    <span>NO_ACCESS_CODE?</span>
+                </div>
+                <a href="register2.html" class="terminal-link">REQUEST_ACCESS &gt;&gt;</a>
+            </div>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-dot pulse-green"></span>
+                <span>SYSTEM_ONLINE</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">🌐</span>
+                <span>SECURE_CONNECTION</span>
+            </div>
+            <div class="status-item">
+                <span id="current-time">00:00:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="login2.js"></script>
+    <script>
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const time = now.toTimeString().split(' ')[0];
+            document.getElementById('current-time').textContent = time;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Prevent pinch zoom
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+        
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
