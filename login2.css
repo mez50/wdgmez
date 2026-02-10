@@ -616,7 +616,7 @@ form {
 @media (max-height: 700px) {
     body {
         align-items: flex-start;
-        padding-top: 4px;
+        padding-top: -10px;
     }
     
     .login-container {
@@ -649,7 +649,7 @@ form {
 @media (max-height: 600px) {
     body {
         align-items: flex-start;
-        padding-top: 2px;
+        padding-top: -10px;
     }
     
     .login-container {
