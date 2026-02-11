@@ -22,10 +22,11 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to flex-start */
     padding: 20px;
+    padding-top: 40px; /* Add top padding for breathing room */
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
     touch-action: pan-y;
     -webkit-text-size-adjust: 100%;
 }
@@ -111,19 +112,19 @@ html {
 .logo-container {
     position: relative;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: -10px;
 }
 
 .cyber-logo {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    filter: drop-shadow(0 0 20px var(--neon-pink)) 
+    /* filter: drop-shadow(0 0 20px var(--neon-pink)) 
             drop-shadow(0 0 40px var(--neon-blue));
-    animation: logoFloat 3s ease-in-out infinite, logoPulse 2s ease-in-out infinite;
+    animation: logoFloat 3s ease-in-out infinite, logoPulse 2s ease-in-out infinite; */
 }
 
-@keyframes logoFloat {
+/* @keyframes logoFloat {
     0%, 100% {
         transform: translateY(0px);
     }
@@ -142,15 +143,16 @@ html {
                 drop-shadow(0 0 60px var(--neon-blue)) 
                 drop-shadow(0 0 80px var(--neon-purple));
     }
-}
+} */
 
 /* Neon Title */
 .cyber-title {
     text-align: center;
     font-family: 'Orbitron', monospace;
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    white-space: nowrap;
+    font-size: clamp(1.2rem, 3.5vw, 2.4rem);
     font-weight: 900;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     position: relative;
     letter-spacing: 0.1em;
 }
@@ -160,12 +162,12 @@ html {
     left: 50%;
     transform: translateX(-50%);
     color: var(--neon-pink);
-    text-shadow: 
+    /* text-shadow: 
         0 0 10px var(--neon-pink),
         0 0 20px var(--neon-pink),
         0 0 40px var(--neon-pink),
         0 0 80px var(--neon-blue),
-        0 0 120px var(--neon-blue);
+        0 0 120px var(--neon-blue); */
 }
 
 .neon-flicker {
@@ -603,7 +605,7 @@ form {
 }
 
 /* Responsive */
-@media (max-width: 480px) {
+@media (max-width: 400px) {
     .cyber-logo {
         width: 100px;
         height: 100px;
