@@ -12,7 +12,9 @@
 <body>
     <div class="container">
         <div class="level-header">
-            <button id="home-btn" class="home-btn">Home</button>
+            <h1>CYBERWORD</h1>
+        </div>
+        <div class="header">
             <h1>SELECT LEVEL</h1>
             <div class="spacer"></div>
         </div>
@@ -26,56 +28,68 @@
                 <span class="level-title">INTERMEDIATE</span>
                 <span class="level-desc">5 Letter Words</span>
             </button>
+            <div class="spacer"></div>
+        </div>
+        <div>
+            <button id="home-btn" class="home-btn">Home</button>
         </div>
     </div>
     <script src="level-select.js"></script>
     <script>
-                const rec = 'zemme50'; // Change this to your password
+        // const rec = 'zemme50'; // Change this to your password
         
-        function check() {
-            const pw = prompt('Enter:');
+        // function check() {
+        //     const pw = prompt('Enter:');
             
-            if (pw === rec) {
-                return true;
-            } else if (pw === null) {
-                document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
-                return false;
-            } else {
-                alert('Incorrect!');
-                return check();
-            }
-        }
-        // Check password on page load
-        if (check()) {
+        //     if (pw === rec) {
+        //         return true;
+        //     } else if (pw === null) {
+        //         document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
+        //         return false;
+        //     } else {
+        //         alert('Incorrect!');
+        //         return check();
+        //     }
+        // }
         
-            // Home button
-            document.getElementById('home-btn').addEventListener('click', () => {
-                window.location.href = '../home2.html';
-            });
-
-            // Prevent pinch zoom on iOS
-            document.addEventListener('gesturestart', function(e) {
-                e.preventDefault();
-            });
-
-            document.addEventListener('gesturechange', function(e) {
-                e.preventDefault();
-            });
-
-            document.addEventListener('gestureend', function(e) {
-                e.preventDefault();
-            });
-
-            // Prevent double-tap zoom
-            let lastTouchEnd = 0;
-            document.addEventListener('touchend', function(event) {
-                const now = Date.now();
-                if (now - lastTouchEnd <= 300) {
-                    event.preventDefault();
-                }
-                lastTouchEnd = now;
-            }, false);
+        // Check if user is logged in
+        if (!sessionStorage.getItem('loggedIn') || sessionStorage.getItem('username') !== "mum") {
+            window.location.href = '../home2.html';
         }
+
+        // Check password on page load
+        // if (check()) {
+        
+        // Home button
+        document.getElementById('home-btn').addEventListener('click', () => {
+            window.location.href = '../home2.html';
+        });
+
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // }
+
     </script>
 </body>
 </html>
