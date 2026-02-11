@@ -180,10 +180,10 @@ html {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 0.8;
         text-shadow: 
-            0 0 10px var(--neon-pink),
-            0 0 20px var(--neon-pink),
-            0 0 40px var(--neon-pink),
-            0 0 80px var(--neon-blue);
+            0 0 5px var(--neon-pink),
+            0 0 5px var(--neon-pink),
+            0 0 0px var(--neon-pink),
+            0 0 0px var(--neon-blue);
     }
     20%, 24%, 55% {
         opacity: 0.4;
