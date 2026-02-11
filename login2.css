@@ -152,7 +152,7 @@ html {
     white-space: nowrap;
     font-size: clamp(2rem, 4vw + 1vh, 2.6rem);
     font-weight: 900;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     position: relative;
     letter-spacing: 0.1em;
 }
