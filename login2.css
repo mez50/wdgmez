@@ -150,7 +150,7 @@ html {
     text-align: center;
     font-family: 'Orbitron', monospace;
     white-space: nowrap;
-    font-size: clamp(1.2rem, 3.5vw, 2.4rem);
+    font-size: clamp(2rem, 4vw + 1vh, 2.6rem);
     font-weight: 900;
     margin-bottom: 30px;
     position: relative;
