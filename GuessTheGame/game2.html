@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>CyberWord Game // Monkey's Butt Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game2.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <button id="back-btn" class="back-btn">
+                <span>←</span>
+                <span class="back-text">BACK</span>
+            </button>
+            <h1>CYBERWORD</h1>
+            <!-- <div class="level-badge" id="level-badge"></div> -->
+        </div>
+        
+        <!-- Message Display -->
+        <div id="message" class="message hidden"></div>
+        
+        <!-- Game Board -->
+        <div id="game-board"></div>
+        
+        <!-- Keyboard -->
+        <div id="keyboard"></div>
+        
+        <!-- Score Stats -->
+        <div class="score-stats">
+            <div class="stat-item">
+                <div class="stat-label">ROUNDS</div>
+                <div class="stat-circle" id="rounds-display">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">SCORE</div>
+                <div class="stat-circle" id="score-display">0</div>
+            </div>
+        </div>
+        
+        <!-- Reset Button -->
+        <button id="reset-btn" class="reset-btn hidden">
+            <span class="btn-icon">⚡</span>
+            <span>PLAY AGAIN</span>
+            <span class="btn-icon">⚡</span>
+        </button>
+    </div>
+    
+    <script src="words.js"></script>
+    <script src="game.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('loggedIn') || sessionStorage.getItem('username') !== "mum") {
+            window.location.href = '../home2.html';
+        }
+        
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

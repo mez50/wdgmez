@@ -47,7 +47,7 @@ async function init() {
     wordLength = levelConfig[currentLevel].length;
     
     // Update level badge
-    document.getElementById('level-badge').textContent = levelConfig[currentLevel].name;
+    // document.getElementById('level-badge').textContent = levelConfig[currentLevel].name;
     
     const words = await loadWords(currentLevel);
     answers = words.answers.map(w => w.toUpperCase());
