@@ -605,7 +605,12 @@ form {
 }
 
 /* Responsive */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+
+    .cyber-title {
+        font-size: clamp(2rem, 4vw + 1vh, 2.6rem);
+    }
+
     .cyber-logo {
         width: 100px;
         height: 100px;
