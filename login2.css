@@ -11,7 +11,8 @@
     --neon-purple: #bd00ff;
     --neon-green: #00ff41;
     --dark-bg: #0a0e27;
-    --darker-bg: #050a1f;
+    /* --darker-bg: #050a1f; */
+    --darker-bg: #1a1a1a;
     --cyber-yellow: #ffeb3b;
 }
 
