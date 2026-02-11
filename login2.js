@@ -30,7 +30,7 @@ document.getElementById('login-form-cyber').addEventListener('submit', async fun
             
             // Simulate cyber effect
             setTimeout(() => {
-                window.location.href = 'home.html';
+                window.location.href = 'home2.html';
             }, 1500);
         } else {
             loadingBar.classList.add('hidden');

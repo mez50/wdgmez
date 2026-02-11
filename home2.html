@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Command Center // Monkey's Butt Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home2.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    
+    <div class="home-container">
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="Images/cyber-monkey.png" alt="Cyber Monkey" class="cyber-logo">
+        </div>
+        
+        <!-- Title with Neon Effect -->
+        <h1 class="cyber-title">
+            <span class="neon-text">COMMAND CENTER</span>
+            <span class="neon-text neon-flicker">COMMAND CENTER</span>
+        </h1>
+        
+        <div class="subtitle-container">
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                <span class="typing-text">GAME_SELECTION_MATRIX_v2.10.26</span>
+                <span class="cursor">_</span>
+            </div>
+        </div>
+        
+        <!-- Welcome Terminal -->
+        <div class="welcome-terminal">
+            <div class="terminal-header">
+                <span class="status-dot pulse-green"></span>
+                <span id="welcome-message">WELCOME_USER</span>
+            </div>
+        </div>
+        
+        <!-- Games Grid -->
+        <div class="games-grid">
+            <!-- Word Game Card -->
+            <div class="cyber-box game-card" onclick="location.href='GuessTheGame/level-select.html'">
+                <div class="box-header">
+                    <div class="header-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="header-text">ACTIVE PROTOCOL</div>
+                </div>
+                
+                <div class="game-content">
+                    <div class="game-icon">🔤</div>
+                    <h2 class="game-title">CYBERWORD</h2>
+                    <p class="game-description">RETRIEVE_WORD_PUZZLE // DECODE_THE_MATRIX</p>
+                    <div class="game-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">DIFFICULTY:</span>
+                            <span class="stat-value">VARIABLE</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">STATUS:</span>
+                            <span class="stat-value online">ONLINE</span>
+                        </div>
+                    </div>
+                    <button class="cyber-btn game-btn">
+                        <span class="btn-bg"></span>
+                        <span class="btn-text">
+                            <span class="btn-icon">⚡</span>
+                            EXECUTE
+                            <span class="btn-icon">⚡</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Coming Soon Card -->
+            <div class="cyber-box game-card locked">
+                <div class="box-header">
+                    <div class="header-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="header-text">LOCKED PROTOCOL</div>
+                </div>
+                
+                <div class="game-content">
+                    <div class="game-icon locked-icon">🔒</div>
+                    <h2 class="game-title">MORE GAMES</h2>
+                    <p class="game-description">INITIALIZING_NEW_PROTOCOLS...</p>
+                    <div class="game-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">ETA:</span>
+                            <span class="stat-value">CLASSIFIED</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">STATUS:</span>
+                            <span class="stat-value offline">OFFLINE</span>
+                        </div>
+                    </div>
+                    <button class="cyber-btn game-btn disabled" disabled>
+                        <span class="btn-bg locked-bg"></span>
+                        <span class="btn-text">
+                            <span class="btn-icon">🔒</span>
+                            LOCKED
+                            <span class="btn-icon">🔒</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="cyber-box panel-box">
+                <div class="panel-content">
+                    <div class="panel-item">
+                        <span class="panel-label">SESSION_ID:</span>
+                        <span class="panel-value" id="session-id">XXXX-XXXX-XXXX</span>
+                    </div>
+                    <div class="panel-divider"></div>
+                    <button onclick="logout()" class="logout-btn">
+                        <span class="logout-icon">🚪</span>
+                        <span>DISCONNECT</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-dot pulse-green"></span>
+                <span>SYSTEM_ONLINE</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">🌐</span>
+                <span>SECURE_CONNECTION</span>
+            </div>
+            <div class="status-item">
+                <span id="current-time">00:00:00</span>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="cyber-footer">
+            <div class="footer-line">
+                <span class="prompt">$</span>
+                <span>© 2026 MONKEY'S_BUTT_STUDIOS // ALL_RIGHTS_RESERVED</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Authentication Check - MUST be at the top
+        if (!sessionStorage.getItem('loggedIn')) {
+            window.location.href = 'login2.html';
+        }
+
+        // Display username
+        const username = sessionStorage.getItem('username') || 'AGENT';
+        document.getElementById('welcome-message').textContent = `WELCOME_${username.toUpperCase()}`;
+        
+        // Generate random session ID
+        function generateSessionId() {
+            return 'XXXX-XXXX-XXXX'.replace(/X/g, () => {
+                return Math.floor(Math.random() * 16).toString(16).toUpperCase();
+            });
+        }
+        document.getElementById('session-id').textContent = generateSessionId();
+
+        // Logout function
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'login2.html';
+        }
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const time = now.toTimeString().split(' ')[0];
+            document.getElementById('current-time').textContent = time;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Prevent pinch zoom
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
