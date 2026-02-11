@@ -115,10 +115,26 @@ html {
     margin-bottom: -10px;
 }
 
+.cyber-logo-lander {
+    width: clamp(2rem, 80vw + 1vh, 20rem);
+    height: clamp(2rem, 80vw + 1vh, 20rem);
+    object-fit: contain;
+}
+
 .cyber-logo {
     width: 120px;
     height: 120px;
     object-fit: contain;
+}
+
+.cyber-title-lander {
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    white-space: nowrap;
+    font-size: clamp(2rem, 6vw + 1vh, 4.6rem);
+    font-weight: 900;
+    position: relative;
+    letter-spacing: 0.1em;
 }
 
 /* Neon Title */
