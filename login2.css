@@ -432,7 +432,7 @@ form {
     position: relative;
     padding: 18px 25px;
     font-family: 'Orbitron', monospace;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 900;
     color: var(--darker-bg);
     background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
@@ -627,7 +627,7 @@ form {
     }
     
     .cyber-btn {
-        font-size: 1.1rem;
+        font-size: 1rem;
         padding: 15px;
     }
     
