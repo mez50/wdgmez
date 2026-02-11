@@ -3,67 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <title>Monkey's Butt Studios</title>
+    <title>Level Select // Monkey's Butt Studios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="level-select.css">
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    
     <div class="container">
-        <div class="level-header">
-            <h1>CYBERWORD</h1>
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="../Images/cyber-monkey.png" alt="Cyber Monkey" class="cyber-logo">
         </div>
-        <div class="header">
-            <h1>SELECT LEVEL</h1>
-            <div class="spacer"></div>
+        
+        <!-- Title with Neon Effect -->
+        <h1 class="cyber-title">
+            <span class="neon-text">CYBERWORD</span>
+            <span class="neon-text neon-flicker">CYBERWORD</span>
+        </h1>
+        
+        <div class="subtitle-container">
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                <span class="typing-text">DIFFICULTY_SELECTION_MATRIX</span>
+                <span class="cursor">_</span>
+            </div>
         </div>
-        <div class="level-container">
-            <button class="level-btn beginner" data-level="beginner">
-                <span class="level-title">BEGINNER</span>
-                <span class="level-desc">4 Letter Words</span>
-            </button>
+        
+        <!-- Level Selection Box -->
+        <div class="cyber-box">
+            <div class="box-header">
+                <div class="header-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="header-text">SELECT DIFFICULTY LEVEL</div>
+            </div>
             
-            <button class="level-btn intermediate" data-level="intermediate">
-                <span class="level-title">INTERMEDIATE</span>
-                <span class="level-desc">5 Letter Words</span>
+            <div class="level-grid">
+                <!-- Beginner Level -->
+                <button class="level-card beginner" data-level="beginner">
+                    <div class="level-icon">🎯</div>
+                    <div class="level-info">
+                        <div class="level-title">4_LETTER_WORDS</div>
+                        <!-- <div class="level-desc">4_LETTER_WORDS</div> -->
+                        <div class="level-stats">
+                            <span class="stat-badge">DIFFICULTY: 1/2</span>
+                        </div>
+                    </div>
+                    <!-- <div class="level-indicator">
+                        <span class="indicator-text">INITIALIZE</span>
+                        <span class="indicator-arrow">→</span>
+                    </div> -->
+                </button>
+                
+                <!-- Intermediate Level -->
+                <button class="level-card intermediate" data-level="intermediate">
+                    <div class="level-icon">⚡</div>
+                    <div class="level-info">
+                        <div class="level-title">5_LETTER_WORDS</div>
+                        <!-- <div class="level-desc">5_LETTER_WORDS</div> -->
+                        <div class="level-stats">
+                            <span class="stat-badge">DIFFICULTY: 2/2</span>
+                        </div>
+                    </div>
+                    <!-- <div class="level-indicator">
+                        <span class="indicator-text">INITIALIZE</span>
+                        <span class="indicator-arrow">→</span>
+                    </div> -->
+                </button>
+                
+                <!-- Advanced Level (Locked) -->
+                <!-- <button class="level-card advance locked" disabled>
+                    <div class="level-icon locked-icon">🔒</div>
+                    <div class="level-info">
+                        <div class="level-title">ADVANCED</div>
+                        <div class="level-desc">6_LETTER_WORDS</div>
+                        <div class="level-stats">
+                            <span class="stat-badge locked-badge">DIFFICULTY: 3/4</span>
+                        </div>
+                    </div>
+                    <div class="level-indicator">
+                        <span class="indicator-text">LOCKED</span>
+                        <span class="indicator-arrow">✖</span>
+                    </div>
+                </button> -->
+                
+                <!-- Pro Level (Locked) -->
+                <!-- <button class="level-card pro locked" disabled>
+                    <div class="level-icon locked-icon">🔒</div>
+                    <div class="level-info">
+                        <div class="level-title">PRO</div>
+                        <div class="level-desc">7_LETTER_WORDS</div>
+                        <div class="level-stats">
+                            <span class="stat-badge locked-badge">DIFFICULTY: 4/4</span>
+                        </div>
+                    </div>
+                    <div class="level-indicator">
+                        <span class="indicator-text">LOCKED</span>
+                        <span class="indicator-arrow">✖</span>
+                    </div>
+                </button> -->
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="nav-panel">
+            <button id="home-btn" class="nav-btn">
+                <span class="btn-icon">🏠</span>
+                <span>RETURN_TO_BASE</span>
             </button>
-            <div class="spacer"></div>
         </div>
-        <div>
-            <button id="home-btn" class="home-btn">Home</button>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-dot pulse-green"></span>
+                <span>SYSTEM_ONLINE</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">🎮</span>
+                <span>GAME_READY</span>
+            </div>
+            <div class="status-item">
+                <span id="current-time">00:00:00</span>
+            </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="cyber-footer">
+            <div class="footer-line">
+                <span class="prompt">$</span>
+                <span>© 2026 MONKEY'S_BUTT_STUDIOS // ALL_RIGHTS_RESERVED</span>
+            </div>
+        </footer>
     </div>
+    
     <script src="level-select.js"></script>
     <script>
-        // const rec = 'zemme50'; // Change this to your password
-        
-        // function check() {
-        //     const pw = prompt('Enter:');
-            
-        //     if (pw === rec) {
-        //         return true;
-        //     } else if (pw === null) {
-        //         document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-size: 1.5rem;">Access Denied</div>';
-        //         return false;
-        //     } else {
-        //         alert('Incorrect!');
-        //         return check();
-        //     }
-        // }
-        
         // Check if user is logged in
         if (!sessionStorage.getItem('loggedIn') || sessionStorage.getItem('username') !== "mum") {
             window.location.href = '../home2.html';
         }
 
-        // Check password on page load
-        // if (check()) {
-        
         // Home button
         document.getElementById('home-btn').addEventListener('click', () => {
             window.location.href = '../home2.html';
         });
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const time = now.toTimeString().split(' ')[0];
+            document.getElementById('current-time').textContent = time;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
 
         // Prevent pinch zoom on iOS
         document.addEventListener('gesturestart', function(e) {
@@ -87,9 +187,6 @@
             }
             lastTouchEnd = now;
         }, false);
-
-        // }
-
     </script>
 </body>
 </html>
