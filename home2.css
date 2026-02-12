@@ -381,8 +381,8 @@ html {
 }
 
 .game-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    margin-bottom: 0px;
     filter: drop-shadow(0 0 10px var(--neon-blue));
     animation: iconFloat 3s ease-in-out infinite;
 }
