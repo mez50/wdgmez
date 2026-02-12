@@ -36,7 +36,7 @@
                 </span>
             </a>
         </div>
-        
+
         <!-- Footer -->
         <footer class="cyber-footer">
             <div class="footer-line">
@@ -45,7 +45,7 @@
             </div>
         </footer>
     </div>
-    
+    <audio id="click-sound" src="./forward-click.mp3" preload="auto"></audio>
     <script>
         // Prevent pinch zoom
         document.addEventListener('gesturestart', function(e) {
@@ -66,6 +66,24 @@
             }
             lastTouchEnd = now;
         }, false);
+
+        const clickSound = document.getElementById("click-sound");
+
+        document.querySelectorAll(".cyber-btn").forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault(); // stop instant navigation
+
+                clickSound.currentTime = 0;
+                clickSound.play();
+
+                const target = this.href;
+
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 300); // delay in ms (tweak if needed)
+            });
+        });
     </script>
+    <audio id="click-sound" src="./forward-click.mp3" preload="auto"></audio>
 </body>
 </html>
