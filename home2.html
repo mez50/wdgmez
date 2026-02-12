@@ -155,7 +155,7 @@
                         <span class="panel-value" id="session-id">XXXX-XXXX-XXXX</span>
                     </div>
                     <div class="panel-divider"></div>
-                    <button onclick="logout()" class="logout-btn">
+                    <button onclick="document.getElementById('click-sound').play(); setTimeout(logout,500);" class="logout-btn">
                         <span class="logout-icon">🚪</span>
                         <span>DISCONNECT</span>
                     </button>
@@ -240,5 +240,6 @@
             lastTouchEnd = now;
         }, false);
     </script>
+    <audio id="click-sound" src="./back-click.mp3" preload="auto"></audio>
 </body>
 </html>
