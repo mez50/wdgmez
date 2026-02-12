@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Level Select // Monkey's Butt Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="level-select.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="../Images/cyber-monkey.png" alt="Cyber Monkey" class="cyber-logo">
+        </div>
+        
+        <!-- Title with Neon Effect -->
+        <h1 class="cyber-title">
+            <span class="neon-text">COMING SOON</span>
+            <span class="neon-text neon-flicker">COMING SOON</span>
+        </h1>
+        
+        <div class="subtitle-container">
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                <span class="typing-text">DIFFICULTY_SELECTION_MATRIX</span>
+                <span class="cursor">_</span>
+            </div>
+        </div>
+        
+        <!-- Level Selection Box -->
+        <div class="cyber-box">
+            <div class="box-header">
+                <div class="header-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="header-text">SELECT DIFFICULTY LEVEL</div>
+            </div>
+            
+            <div class="level-grid">
+                <!-- Beginner Level -->
+                <button class="level-card beginner" data-level="beginner" disabled>
+                    <div class="level-icon">🤖</div>
+                    <div class="level-info">
+                        <div class="level-title">BEGINNER</div>
+                        <div class="level-stats">
+                            <span class="stat-badge">DIFFICULTY: 1/4</span>
+                        </div>
+                    </div>
+                </button>
+                
+                <!-- Intermediate Level -->
+                <button class="level-card intermediate" data-level="intermediate" disabled>
+                    <div class="level-icon">🛡️</div>
+                    <div class="level-info">
+                        <div class="level-title">INTERMEDIATE</div>
+                        <div class="level-stats">
+                            <span class="stat-badge">DIFFICULTY: 2/4</span>
+                        </div>
+                    </div>
+                </button>
+                
+                <!-- Advanced Level -->
+                <button class="level-card advanced" data-level="advanced" disabled>
+                    <div class="level-icon">🧠</div>
+                    <div class="level-info">
+                        <div class="level-title">ADVANCED</div>
+                        <div class="level-stats">
+                            <span class="stat-badge">DIFFICULTY: 3/4</span>
+                        </div>
+                    </div>
+                </button>
+                
+                <!-- Expert Level -->
+                <button class="level-card expert" data-level="expert" disabled>
+                    <div class="level-icon">☠️</div>
+                    <div class="level-info">
+                        <div class="level-title">EXPERT</div>
+                        <div class="level-stats">
+                            <span class="stat-badge">DIFFICULTY: 4/4</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="nav-panel">
+            <button id="home-btn" class="nav-btn">
+                <span class="btn-icon">🏠</span>
+                <span>RETURN_TO_BASE</span>
+            </button>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-dot pulse-green"></span>
+                <span>SYSTEM_ONLINE</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">🎮</span>
+                <span>GAME_READY</span>
+            </div>
+            <div class="status-item">
+                <span id="current-time">00:00:00</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="cyber-footer">
+            <div class="footer-line">
+                <span class="prompt">$</span>
+                <span>© 2026 MONKEY'S_BUTT_STUDIOS // ALL_RIGHTS_RESERVED</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="level-select.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('loggedIn') || sessionStorage.getItem('username') !== "mum") {
+            window.location.href = '../home2.html';
+        }
+
+        // Home button
+        document.getElementById('home-btn').addEventListener('click', () => {
+            window.location.href = '../home2.html';
+        });
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const time = now.toTimeString().split(' ')[0];
+            document.getElementById('current-time').textContent = time;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Prevent pinch zoom on iOS
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
