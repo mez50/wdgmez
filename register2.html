@@ -54,5 +54,24 @@
             </a>
         </div>
     </div>
+    <audio id="click-sound" src="./forward-click.mp3" preload="auto"></audio>
+    <script>
+        const clickSound = document.getElementById("click-sound");
+
+        document.querySelectorAll(".cyber-btn").forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault(); // stop instant navigation
+
+                clickSound.currentTime = 0;
+                clickSound.play();
+
+                const target = this.href;
+
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 500); // delay in ms (tweak if needed)
+            });
+        });
+    </script>
 </body>
 </html>

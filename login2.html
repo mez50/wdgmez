@@ -89,7 +89,7 @@
                     <div class="error-text"></div>
                 </div>
                 
-                <button type="submit" class="cyber-btn">
+                <button type="submit" class="cyber-btn" onclick="document.getElementById('click-sound').play()">
                     <span class="btn-bg"></span>
                     <span class="btn-text">
                         <span class="btn-icon">⚡</span>
@@ -161,5 +161,6 @@
             lastTouchEnd = now;
         }, false);
     </script>
+    <audio id="click-sound" src="./forward-click.mp3" preload="auto"></audio>
 </body>
 </html>
