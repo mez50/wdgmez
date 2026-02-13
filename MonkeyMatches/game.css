@@ -781,8 +781,8 @@ html {
 }
 
 .win-icon {
-    font-size: 5rem;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    margin-bottom: 0px;
     animation: winBounce 1s ease-in-out infinite;
 }
 
@@ -797,10 +797,10 @@ html {
 
 .win-title {
     font-family: 'Orbitron', monospace;
-    font-size: 2rem;
+    font-size: 1.1rem;
     font-weight: 900;
     color: var(--bright-green);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     letter-spacing: 0.1em;
     text-shadow: 
         0 0 10px var(--bright-green),
@@ -834,10 +834,9 @@ html {
 
 .win-stat-value {
     font-family: 'Orbitron', monospace;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--neon-pink);
-    text-shadow: 0 0 10px var(--neon-pink);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--neon-blue);
 }
 
 .win-actions {
