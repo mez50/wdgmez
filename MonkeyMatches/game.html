@@ -140,7 +140,7 @@
             </div>
         </div>
     </div>
-    
+    <audio id="click-sound" src="../game-sound.mp3" preload="auto"></audio>
     <script src="game.js"></script>
     <script>
         // Check if user is logged in
@@ -176,6 +176,27 @@
             }
             lastTouchEnd = now;
         }, false);
+
+        const clickSound = document.getElementById("click-sound");
+        const winScreen = document.getElementById("win-screen");
+
+        let wasHidden = true; // track previous state
+
+        const observer = new MutationObserver(() => {
+            const isHidden = winScreen.classList.contains("hidden");
+
+            // only play when it transitions hidden → visible
+            if (wasHidden && !isHidden) {
+                clickSound.currentTime = 0;
+                clickSound.play().catch(err => console.log(err));
+            }
+
+            wasHidden = isHidden;
+        });
+
+        observer.observe(winScreen, { attributes: true, attributeFilter: ["class"] });
+
+
     </script>
 </body>
 </html>
