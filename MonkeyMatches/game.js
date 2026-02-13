@@ -24,7 +24,7 @@ const difficultyConfig = {
 const EMOJI_CONFIG = {
     faces: {
         path: 'emojis/EmojiFaces/',
-        count: 90  // Adjust based on your actual number of face images
+        count: 52  // Adjust based on your actual number of face images
     },
     items: {
         path: 'emojis/EmojiItems/',
@@ -44,8 +44,8 @@ async function loadEmojiImages() {
             img.src = src;
         });
 
-    // Load face emojis (1-90)
-    for (let i = 1; i <= 90; i++) {
+    // Load face emojis (1-52)
+    for (let i = 1; i <= 52; i++) {
         const src = `emojis/EmojiFaces/${i}.png`;
         const ok = await testImage(src);
         if (ok) emojiImages.push({ src, type: 'face' });
