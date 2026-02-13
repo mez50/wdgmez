@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Monkey Matches // Memory Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    
+    <div class="game-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="../Images/cyber-monkey.png" alt="Cyber Monkey" class="cyber-logo">
+        </div>
+        
+        <!-- Title -->
+        <h1 class="cyber-title">
+            <span class="neon-text">MONKEY MATCHES</span>
+            <span class="neon-text neon-flicker">MONKEY MATCHES</span>
+        </h1>
+        
+        <!-- Game Play Screen -->
+        <div id="game-screen" class="screen">
+            <!-- Game Header -->
+            <div class="game-header">
+                <button id="back-btn" class="header-btn">
+                    <span>←</span>
+                    <span class="btn-label">BACK</span>
+                </button>
+                
+                <div class="stats-panel">
+                    <div class="stat-item">
+                        <div class="stat-label">TIME</div>
+                        <div class="stat-value" id="timer">00:00</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">MOVES</div>
+                        <div class="stat-value" id="moves">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">SCORE</div>
+                        <div class="stat-value" id="score">0</div>
+                    </div>
+                </div>
+                
+                <div class="level-badge" id="current-level">PLEASE WAIT ... LOADING</div>
+            </div>
+            
+            <!-- Game Board -->
+            <div id="game-board" class="game-board"></div>
+            
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button id="restart-btn" class="control-btn">
+                    <span class="btn-icon">⟳</span>
+                    <span>RESTART</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Win Screen -->
+        <div id="win-screen" class="screen hidden">
+            <div class="cyber-box win-box">
+                <div class="box-header">
+                    <div class="header-dots">
+                        <span class="dot green"></span>
+                        <span class="dot green"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="header-text">MISSION COMPLETE</div>
+                </div>
+                
+                <div class="win-content">
+                    <div class="win-icon">🎉</div>
+                    <div class="win-title">VICTORY ACHIEVED</div>
+                    
+                    <div class="win-stats">
+                        <div class="win-stat">
+                            <div class="win-stat-label">LEVEL</div>
+                            <div class="win-stat-value" id="win-level">BEGINNER</div>
+                        </div>
+                        <div class="win-stat">
+                            <div class="win-stat-label">TIME</div>
+                            <div class="win-stat-value" id="win-time">00:00</div>
+                        </div>
+                        <div class="win-stat">
+                            <div class="win-stat-label">MOVES</div>
+                            <div class="win-stat-value" id="win-moves">0</div>
+                        </div>
+                        <div class="win-stat">
+                            <div class="win-stat-label">SCORE</div>
+                            <div class="win-stat-value" id="win-score">0</div>
+                        </div>
+                        <div class="win-stat">
+                            <div class="win-stat-label">ACCURACY</div>
+                            <div class="win-stat-value" id="win-accuracy">100%</div>
+                        </div>
+                        <div class="win-stat">
+                            <div class="win-stat-label">MISMATCHES</div>
+                            <div class="win-stat-value" id="win-mismatches">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="win-actions">
+                        <button id="play-again-btn" class="cyber-btn">
+                            <span class="btn-text">
+                                <span class="btn-icon">⚡</span>
+                                PLAY AGAIN
+                                <span class="btn-icon">⚡</span>
+                            </span>
+                        </button>
+                        
+                        <button id="change-level-btn" class="secondary-btn">
+                            <span>CHANGE LEVEL</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-dot pulse-green"></span>
+                <span>SYSTEM_ONLINE</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">🎮</span>
+                <span>GAME_READY</span>
+            </div>
+            <div class="status-item">
+                <span id="current-time">00:00:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('loggedIn')) {
+            window.location.href = '../home2.html';
+        }
+
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const time = now.toTimeString().split(' ')[0];
+            document.getElementById('current-time').textContent = time;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Prevent pinch zoom
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

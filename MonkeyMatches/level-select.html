@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <title>Level Select // Monkey's Butt</title>
+    <title>Level Select // Monkey Matches</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     <div class="cyber-grid"></div>
     <div class="scanlines"></div>
     
-    <div class="container">
+    <div class="game-container">
         <!-- Logo Section -->
         <div class="logo-container">
             <img src="../Images/cyber-monkey.png" alt="Cyber Monkey" class="cyber-logo">
@@ -22,8 +22,8 @@
         
         <!-- Title with Neon Effect -->
         <h1 class="cyber-title">
-            <span class="neon-text">COMING SOON</span>
-            <span class="neon-text neon-flicker">COMING SOON</span>
+            <span class="neon-text">MONKEY MATCHES</span>
+            <span class="neon-text neon-flicker">MONKEY MATCHES</span>
         </h1>
         
         <div class="subtitle-container">
@@ -47,10 +47,11 @@
             
             <div class="level-grid">
                 <!-- Beginner Level -->
-                <button class="level-card beginner" data-level="beginner" disabled>
+                <button class="level-card beginner" data-level="beginner" data-grid="4">
                     <div class="level-icon">🤖</div>
                     <div class="level-info">
                         <div class="level-title">BEGINNER</div>
+                        <div class="level-desc">4×4 GRID // 8 PAIRS</div>
                         <div class="level-stats">
                             <span class="stat-badge">DIFFICULTY: 1/4</span>
                         </div>
@@ -58,10 +59,11 @@
                 </button>
                 
                 <!-- Intermediate Level -->
-                <button class="level-card intermediate" data-level="intermediate" disabled>
+                <button class="level-card intermediate" data-level="intermediate" data-grid="6">
                     <div class="level-icon">🛡️</div>
                     <div class="level-info">
                         <div class="level-title">INTERMEDIATE</div>
+                        <div class="level-desc">6×6 GRID // 18 PAIRS</div>
                         <div class="level-stats">
                             <span class="stat-badge">DIFFICULTY: 2/4</span>
                         </div>
@@ -69,10 +71,11 @@
                 </button>
                 
                 <!-- Advanced Level -->
-                <button class="level-card advanced" data-level="advanced" disabled>
+                <button class="level-card advanced" data-level="advanced" data-grid="8">
                     <div class="level-icon">🧠</div>
                     <div class="level-info">
                         <div class="level-title">ADVANCED</div>
+                        <div class="level-desc">8×8 GRID // 32 PAIRS</div>
                         <div class="level-stats">
                             <span class="stat-badge">DIFFICULTY: 3/4</span>
                         </div>
@@ -80,10 +83,11 @@
                 </button>
                 
                 <!-- Expert Level -->
-                <button class="level-card expert" data-level="expert" disabled>
+                <button class="level-card expert" data-level="expert" data-grid="10">
                     <div class="level-icon">☠️</div>
                     <div class="level-info">
                         <div class="level-title">EXPERT</div>
+                        <div class="level-desc">10×10 GRID // 50 PAIRS</div>
                         <div class="level-stats">
                             <span class="stat-badge">DIFFICULTY: 4/4</span>
                         </div>
@@ -124,12 +128,19 @@
         </footer>
     </div>
     
-    <script src="level-select.js"></script>
     <script>
         // Check if user is logged in
         if (!sessionStorage.getItem('loggedIn')) {
             window.location.href = '../home2.html';
         }
+
+        // Level selection
+        document.querySelectorAll('.level-card').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const level = btn.dataset.level;
+                window.location.href = `game.html?level=${level}`;
+            });
+        });
 
         // Home button
         document.getElementById('home-btn').addEventListener('click', () => {
